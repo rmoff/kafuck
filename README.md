@@ -40,59 +40,9 @@ It's a real, working, append-only commit log with offsets, a produce API and a c
 - 🪶 **Lightweight.** No ZooKeeper. No KRaft.
 - 🎧 **No `advertised.listeners`.** There are no listeners. Nobody can connect to it, so nobody can connect to it wrongly.
 - ♾️ **Infinite retention.** Data is kept for as long as you keep the terminal open.
-- 🧱 **Immutable log.** We couldn't work out how to delete anything.
 - 🔌 **Kafka-compatible**.²
 
 <sub>¹ See Benchmarks. Kafka was configured for fairness. ² With the concept of a log.</sub>
-
-## 🚀 Quickstart
-
-It really works.
-
-```bash
-git clone https://github.com/rmoff/kafuck.git
-cd kafuck
-./kafuck
-```
-
-```
-Phello
-0
-Pworld
-1
-C0
-0: hello
-1: world
-```
-
-Or pipe it in, for a fully automated, zero-touch, cloud-native experience:
-
-```bash
-printf 'Phello\nPworld\nC1\n' | ./kafuck
-```
-
-## 📡 Protocol
-
-Kafuck speaks a bespoke wire protocol over stdin.
-
-| Command | Does | Returns |
-|---|---|---|
-| `P<message>` | Appends `<message>` to the log | The new record's offset |
-| `C<offset>` | Reads from `<offset>` to the end of the log | `<offset>: <message>`, one per line |
-| `C` | Reads from the beginning | As above |
-| Anything else | Ignored, one character at a time | Nothing, unless it contains a capital P or C |
-
-`Xylophone Party` produces the message `arty`. There is a test for this, so it's a feature.
-
-Messages must end with a newline. A message without one makes the broker wait for the rest of it forever. The CLI adds a newline for you, because we care.
-
-## 🔢 Offsets
-
-Kafka spends 8 bytes on every offset. Kafuck uses one: an offset is a single ASCII character, starting at `0`.
-
-After offset `9` comes offset `:`, then `;`, `<`, `=`, `>`, `?`, `@` and `A`. Offset 19 is `C`. Offset 32 is `P`. To consume from offset 12, send `C<`.
-
-After 256 messages the offset counter wraps back to `0` and every consumer sees an empty partition. We call this retention.
 
 ## 💾 Storage
 
@@ -161,6 +111,56 @@ Measured on a laptop. Kafka was still not measured.
 
 Throughput falls as the log grows. This is backpressure, and it's built in.
 
+
+## 🚀 Quickstart
+
+It really works.
+
+```bash
+git clone https://github.com/rmoff/kafuck.git
+cd kafuck
+./kafuck
+```
+
+```
+Phello
+0
+Pworld
+1
+C0
+0: hello
+1: world
+```
+
+Or pipe it in, for a fully automated, zero-touch, cloud-native experience:
+
+```bash
+printf 'Phello\nPworld\nC1\n' | ./kafuck
+```
+
+## 📡 Protocol
+
+Kafuck speaks a bespoke wire protocol over stdin.
+
+| Command | Does | Returns |
+|---|---|---|
+| `P<message>` | Appends `<message>` to the log | The new record's offset |
+| `C<offset>` | Reads from `<offset>` to the end of the log | `<offset>: <message>`, one per line |
+| `C` | Reads from the beginning | As above |
+| Anything else | Ignored, one character at a time | Nothing, unless it contains a capital P or C |
+
+`Xylophone Party` produces the message `arty`. There is a test for this, so it's a feature.
+
+Messages must end with a newline. A message without one makes the broker wait for the rest of it forever. The CLI adds a newline for you, because we care.
+
+## 🔢 Offsets
+
+Kafka spends 8 bytes on every offset. Kafuck uses one: an offset is a single ASCII character, starting at `0`.
+
+After offset `9` comes offset `:`, then `;`, `<`, `=`, `>`, `?`, `@` and `A`. Offset 19 is `C`. Offset 32 is `P`. To consume from offset 12, send `C<`.
+
+After 256 messages the offset counter wraps back to `0` and every consumer sees an empty partition. We call this retention.
+
 ## 🏗️ Architecture
 
 The whole broker is one tape:
@@ -212,10 +212,6 @@ Kafuck does not yet support:
 - **Operations.** No metrics, rolling upgrades, partition reassignment or tiered storage.
 - **An ecosystem.** No Connect, no Streams, no client libraries in a dozen languages, no decade of Stack Overflow answers.
 - **Users.**
-
-These happen to be the parts that make Kafka Kafka.
-
-The log was the easy bit. We did it in Brainfuck.
 
 ## 📜 License
 
