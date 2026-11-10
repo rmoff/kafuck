@@ -102,6 +102,22 @@ After offset `9` comes offset `:`, then `;`, `<`, `=`, `>`, `?`, `@` and `A`. Of
 
 After 256 messages the offset counter wraps back to `0` and every consumer sees an empty partition. We call this retention.
 
+## 💾 Storage
+
+Kafuck is **diskless**.
+
+Other diskless Kafkas write to S3, which is made of disks. Kafuck keeps everything in memory, on the Brainfuck tape. When the process exits, the data goes with it. This is the only truly diskless architecture.
+
+For teams with different durability requirements, Kafuck supports pluggable storage through the shell:
+
+| Backend | Configuration | Durability |
+|---|---|---|
+| **Diskless** (default) | `./kafuck` | Until you close the terminal |
+| **/dev/null** | `./kafuck > /dev/null` | None, at unlimited write throughput |
+| **Avian** ([RFC 1149](https://www.rfc-editor.org/rfc/rfc1149)) | `./kafuck \| xxd -p \| lpr`, then tie the printout to a pigeon | Geo-replicated, one bird per replica |
+
+Avian storage is hex-encoded, as RFC 1149 requires.
+
 ## 📊 Benchmarks
 
 ### Kafuck has 20,625x lower end-to-end latency than Apache Kafka 🚀
