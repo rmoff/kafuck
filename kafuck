@@ -1,0 +1,55 @@
+#!/usr/bin/env python3
+"""Kafuck: start the broker. The broker is this process. So is the cluster."""
+
+import io
+import os
+import sys
+
+ROOT = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, ROOT)
+
+import bf  # noqa: E402
+
+BANNER = r"""
+  _     _ _______ _______ _     _ _______ _     _
+  |____/  |_____| |______ |     | |       |____/
+  |    \_ |     | |       |_____| |_____  |    \_   v1.0.1  blazingly fast
+
+ Broker started. Cluster size: 1. Network listeners: 0. advertised.listeners: n/a.
+
+   Phello    produce "hello"
+   C0        consume from offset 0
+   Ctrl-D    shut down and lose everything
+
+"""
+
+
+def main():
+    with open(os.path.join(ROOT, "src", "broker.bf"), encoding="latin-1") as f:
+        broker = f.read()
+
+    if sys.stdin.isatty():
+        sys.stderr.write(BANNER)
+        stdin = sys.stdin.buffer
+    else:
+        data = sys.stdin.buffer.read()
+        if data and not data.endswith(b"\n"):
+            data += b"\n"
+        stdin = io.BytesIO(data)
+
+    try:
+        bf.run(broker, stdin, sys.stdout.buffer)
+    except bf.InfiniteRetention:
+        sys.stderr.write("\nInput ended mid-message. Entering infinite retention mode (exiting).\n")
+        return 1
+    except KeyboardInterrupt:
+        sys.stderr.write("\nInterrupted. All data has been lost. This is expected.\n")
+        return 130
+
+    if sys.stdin.isatty():
+        sys.stderr.write("\nBroker shut down. You FAFO'd. All data has been lost. But at least it was fast, amirite?\n")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
