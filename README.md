@@ -114,17 +114,19 @@ Avian storage is hex-encoded, as RFC 1149 requires.
 
 ### Kafuck has 20,625x lower end-to-end latency than Apache Kafka 🚀
 
-```
-End-to-end latency, one message (lower is better)
-
-  Kafuck  ▏                                                          0.27 ms
-  Kafka   ██████████████████████████████████████████████████     5,500.00 ms
-```
+![Bar chart titled "Kafuck is 20,625x faster". Apache Kafka 5,500 ms, Kafuck 1.0.1 0.27 ms, Kafuck 2.0 (Rust, projected) 0.0001 ms. The y-axis is labelled "Performance (ms), higher is better", with ticks at 0, 1, 10, 500 and 20,000.](demo/benchmark-report-x.png)
 
 Reproduce it yourself:
 
 ```bash
 python3 bench/bench.py
+```
+
+```
+End-to-end latency, one message (lower is better)
+
+  Kafuck  ▏                                                          0.27 ms
+  Kafka   ██████████████████████████████████████████████████     5,500.00 ms
 ```
 
 Your numbers may vary. Ours didn't, because we only published the best one.
@@ -160,6 +162,12 @@ Measured on a laptop. Kafka was still not measured.
 | GitHub stars | Please | Lots |
 
 Throughput falls as the log grows. This is backpressure, and it's built in.
+
+### Investor version
+
+Same data.
+
+<img src="demo/linkedin-chart.png" width="600" alt="A garish 3D bar chart titled KAFUCK vs KAFKA, with a starburst reading OVER 20,000x FASTER, a y-axis running 0, 1, 2, 500, 20,000, infinity, and a pie chart of market share that sums to 135%.">
 
 ## 🏗️ Architecture
 
