@@ -11,7 +11,7 @@ Blazingly fast. Memory safe. Zero dependencies.\* Production-ready.\*\*
 ![JVM](https://img.shields.io/badge/JVM-none-success)
 ![stars](https://img.shields.io/badge/stars-please-yellow)
 ![contributors](https://img.shields.io/badge/contributors-47-blue)
-![tokens](https://img.shields.io/badge/tokens%20donated-3.1M-purple)
+[![tokens](https://img.shields.io/badge/tokens%20donated-3.1M-purple)](TOKEN_RECEIPT.md)
 ![private key](https://img.shields.io/badge/private%20key-4-red)
 ![license](https://img.shields.io/badge/license-public%20domain-lightgrey)
 
@@ -23,21 +23,13 @@ Blazingly fast. Memory safe. Zero dependencies.\* Production-ready.\*\*
 
 ---
 
-Every week someone rewrites Kafka over a weekend in a language that isn't Java, posts it to Hacker News, and waits for the stars to roll in. We looked at this crowded market and saw a gap: nobody had done it in a language with eight instructions.
+We love Kafka. But it was designed over a decade ago, for a different era. It runs on the JVM. Its architecture predates the cloud.
 
-Kafuck is the result. It is a real, working, append-only commit log with offsets, a produce API and a consume API, written in 1,022 instructions of pure Brainfuck. It passes all of its tests.
+So we asked ourselves: what would Kafka look like if we built it today, from first principles?
 
-That's the problem.
+Kafuck is the answer. No JVM. No garbage collector. No threads, no network, no disk. Just one tape of memory and eight instructions, in a modern thread-per-nothing architecture.
 
-## 🎁 A gift to the community
-
-We believe in giving back.
-
-That's why we're donating Kafuck to the public domain, the way you donate an old sofa to the pavement: with a sign saying FREE, and no intention of ever coming back for it.
-
-This repository is roughly 3.1 million tokens of LLM output, itemised in [TOKEN_RECEIPT.md](TOKEN_RECEIPT.md). We could have kept those tokens to ourselves. Instead we published them, under our name, with a star button next to them.
-
-You're welcome.
+It's a real, working, append-only commit log with offsets, a produce API and a consume API, written in 1,022 instructions of pure Brainfuck. It's also 20,625x faster than Kafka. We have benchmarks.
 
 ## ✨ Features
 
@@ -45,11 +37,11 @@ You're welcome.
 - 🦀 **Memory safe.** There is exactly one pointer, and we've been very careful with it.
 - 📦 **Zero dependencies.** Apart from a Brainfuck interpreter, which we wrote in Python, which is written in C.
 - 🎯 **Exactly-once semantics.** Every consume prints every message exactly once.
-- 🪶 **Lightweight.** No JVM. No ZooKeeper. No KRaft. No network. No disk.
+- 🪶 **Lightweight.** No ZooKeeper. No KRaft.
 - 🎧 **No `advertised.listeners`.** There are no listeners. Nobody can connect to it, so nobody can connect to it wrongly.
 - ♾️ **Infinite retention.** Data is kept for as long as you keep the terminal open.
 - 🧱 **Immutable log.** We couldn't work out how to delete anything.
-- 🔌 **Kafka-compatible.**²
+- 🔌 **Kafka-compatible**.²
 
 <sub>¹ See Benchmarks. Kafka was configured for fairness. ² With the concept of a log.</sub>
 
@@ -228,5 +220,3 @@ The log was the easy bit. We did it in Brainfuck.
 ## 📜 License
 
 Public domain, under [the Unlicense](LICENSE), which describes itself as "an overt act of relinquishment in perpetuity". We couldn't have put it better.
-
-<sub>Not affiliated with or endorsed by the Apache Software Foundation. Apache, Apache Kafka, Kafka and associated open source project names are trademarks of the Apache Software Foundation.</sub>

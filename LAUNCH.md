@@ -24,7 +24,7 @@ Copy, paste, refresh the star count every four minutes.
 >
 > I've open-sourced it, because I believe in giving back. 🙏
 >
-> Agree? ♻️ Repost to help someone in your network who is still using Java.
+> Agree? ♻️ Repost to help someone in your network.
 >
 > #opensource #kafka #streaming #ai #buildinpublic #humbled
 

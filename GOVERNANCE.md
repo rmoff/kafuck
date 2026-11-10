@@ -28,7 +28,3 @@ A release is cut whenever the README needs a new screenshot.
 ## Bus factor
 
 One. Token factor: unlimited, subject to billing.
-
-## Foundation
-
-We intend to donate Kafuck to a software foundation, so that it can become someone else's problem in a more official capacity.

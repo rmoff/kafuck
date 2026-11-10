@@ -8,13 +8,7 @@ Thank you for your interest in contributing! Contributions are the lifeblood of 
 2. **Fork it.** You don't need to change anything. Forks show up on the repo page.
 3. **Open an issue.** Any issue. "Is this production-ready?" is a great first issue, and we'll reply "Yes!" within minutes.
 4. **Fix a typo.** We've left some in for you. Good first issue: this sentance has one.
-5. **Open a pull request.** Every PR is reviewed by the same model that wrote the code. It has approved every PR so far, and apologised for two of them.
-
-## What we don't need
-
-- Bug reports that would require someone to understand the code. Nobody understands the code.
-- Design discussions. The design is finished. It was finished on Saturday.
-- Users. See Known limitations in the [README](README.md).
+5. **Open a pull request.** Every PR is reviewed by the same model that wrote the code, since nobody else understands it. It has approved every PR so far, and apologised for two of them.
 
 ## Development setup
 
