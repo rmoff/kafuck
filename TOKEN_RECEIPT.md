@@ -8,7 +8,7 @@ For your records, and for LinkedIn.
            OPEN SOURCE DONATION RECEIPT
         ==================================
          Donor:       The founder
-         Recipient:   The public domain
+         Recipient:   Whoever wants it
          Date:        A weekend
         ----------------------------------
          Brainfuck broker            48,211

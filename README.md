@@ -13,7 +13,7 @@ Blazingly fast. Memory safe. Zero dependencies.\* Production-ready.\*\*
 ![contributors](https://img.shields.io/badge/contributors-47-blue)
 [![tokens](https://img.shields.io/badge/tokens%20donated-3.1M-purple)](TOKEN_RECEIPT.md)
 ![private key](https://img.shields.io/badge/private%20key-4-red)
-![license](https://img.shields.io/badge/license-public%20domain-lightgrey)
+![license](https://img.shields.io/badge/license-WTFPL-lightgrey)
 
 <sub>\* See Features. \*\* Since Saturday.</sub>
 
@@ -219,4 +219,4 @@ The log was the easy bit. We did it in Brainfuck.
 
 ## 📜 License
 
-Public domain, under [the Unlicense](LICENSE), which describes itself as "an overt act of relinquishment in perpetuity". We couldn't have put it better.
+[WTFPL](LICENSE), the Do What The Fuck You Want To Public License. It has one clause. Our legal team has read all of it.

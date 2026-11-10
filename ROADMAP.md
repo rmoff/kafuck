@@ -16,6 +16,7 @@
 ## Q3
 
 - [ ] Replication (status: exploring)
+- [ ] Stream processing: **Kafuck Streams** (status: piping one Kafuck into another to see what happens)
 - [ ] Rewrite Kafuck in Rust, for performance
 - [ ] Pivot to AI: **Kafuck for Agents**, an append-only log that LLMs write to and nobody reads
 
