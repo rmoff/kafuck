@@ -220,6 +220,12 @@ Kafuck does not yet support:
 - **An ecosystem.** No Connect, no Streams, no client libraries in a dozen languages, no decade of Stack Overflow answers.
 - **Users.**
 
+## ⭐ Star History
+
+On course for 1,000,000 stars by Saturday. Please ⭐ to help us stay on course.
+
+![Hand-drawn star history chart. The actual line is 32 stars, flat along the bottom. A dashed projection at 32x growth per day overtakes apache/kafka on Friday 13th and reaches 1,000,000 stars on Saturday. An inset shows the actual data, zoomed in 30,000x.](demo/star-history.png)
+
 ## 📜 License
 
 [WTFPL](LICENSE), the Do What The Fuck You Want To Public License. It has one clause. Our legal team has read all of it.
