@@ -7,7 +7,7 @@ Thank you for your interest in contributing! Contributions are the lifeblood of 
 1. **⭐ Star the repository.** This is the most valuable thing you can do. Stars are how we measure community.
 2. **Fork it.** You don't need to change anything. Forks show up on the repo page.
 3. **Open an issue.** Any issue. "Is this production-ready?" is a great first issue, and we'll reply "Yes!" within minutes.
-4. **Fix a typo.** We've left some in for you. Good first issue: this sentance has one.
+4. **Fix a typo.** We've left some in for you. Good first issue: this sentance has twoo.
 5. **Open a pull request.** Every PR is reviewed by the same model that wrote the code, since nobody else understands it. It has approved every PR so far, and apologised for two of them.
 
 ## Development setup
